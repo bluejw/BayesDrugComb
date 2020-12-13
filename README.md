@@ -1,5 +1,5 @@
 # BayesDrugComb
-R data and code for the paper "A Bayesian Nonparametric Approach for Inferring Drug Combination Effects on Mental Health in People with HIV".
+R data and code for paper "A Bayesian Nonparametric Approach for Inferring Drug Combination Effects on Mental Health in People with HIV".
 
 ## Data
 
@@ -18,4 +18,30 @@ In the folder “BNP_DrugComb_Simulation”:
 
 * The R script “Simulation_Main.R” reproduces Figure 4, Figure 5, Figure 6 in the manuscript, and Table S1, Figure S2, Figure S3, Figure S4, Table S5, Figure S6 in the Supplementary Material;
     
-    
+* The R data file “Simu.Data.Preprocess.Rdata” contains the preprocessed data from the WIHS dataset used for generating simulation truths. The R script “Data_Generate.R” generates the simulated dataset, which is saved in the R data file “Simu.Truths.Rdata”;  
+
+* The R script “MCMC_R_Functions.R” provides R functions used for MCMC, the Rcpp script “MCMC_Rcpp_Functions.cpp” provides Rcpp functions used for MCMC, and the R
+script “BNP_DrugComb_MCMC.R” provides the MCMC main function;
+
+* We save the MCMC posterior samples for one randomly selected simulated dataset in the simulation study in the R data file “Simu.MCMC.Results.Rdata", and the MCMC posterior samples for the same simulated dataset in the sensitivity analysis in the R data file “Sensi.MCMC.Results.Rdata";
+
+* We save the posterior co-clustering results based on 100 repeated simulations in the R data file “Simu.Co.Clustering.Rdata”, and the mean squared errors for all 100 repeated simulations in the R data file “Simu.Mean.Squared.Error.Rdata”;
+
+* We save the estimated combination effects under two methods Normal+Linear and DP+Linear in the R data file “Simu.Combination.Effects.Linear.Kernel.Rdata”.
+
+In the folder “BNP_DrugComb_WIHS”:
+
+* The R script “BNP_DrugComb_WIHS_Inference.R” reproduces Figure 7, Figure 8, Table 1, and Figure 9 in the manuscript;
+
+* The R script “MCMC_R_Functions.R” provides R functions used for MCMC, the Rcpp script “MCMC_Rcpp_Functions.cpp” provides Rcpp functions used for MCMC, and the R script “BNP_DrugComb_MCMC.R” provides the MCMC main function;
+
+* The R script “Subset_Tree_Kernel_Similarity.R” provides functions for calculating the similarity matrix induced by subset-tree kernel, and the R script “Prediction.R” provides functions for predictions；
+
+* We save the preprocessed data from the WIHS dataset for inference in the R data file “WIHS.Data.Preprocess.Rdata”, and the MCMC posterior samples for the WIHS data analysis in the R data file “WIHS.MCMC.Results.Rdata”.
+
+
+
+
+
+
+
