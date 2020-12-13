@@ -10,9 +10,7 @@ The data are publicly available. However, one need to fill in a request form for
 
 ## Code 
 
-The R scripts in the folder “BNP_DrugComb_Simulation” are for Section 3 “Simulation Study”, and the R scripts in the folder “BNP_DrugComb_WIHS” are for Section 4 “Application: WIHS Data Analysis”. 
-
-Libraries and Version Numbers: R 3.5.1, Rcpp 1.0.0, RcppArmadillo 0.9.700.2.0, RcppEigen 0.3.3.5.0, Matrix 1.2-14, LaplacesDemon 16.1.1, ggplot2 3.1.0, gridExtra 2.3, lattice 0.20-35.
+The R scripts in the folder “BNP_DrugComb_Simulation” are for Section 3 “Simulation Study”, and the R scripts in the folder “BNP_DrugComb_WIHS” are for Section 4 “Application: WIHS Data Analysis”. Libraries and Version Numbers: R 3.5.1, Rcpp 1.0.0, RcppArmadillo 0.9.700.2.0, RcppEigen 0.3.3.5.0, Matrix 1.2-14, LaplacesDemon 16.1.1, ggplot2 3.1.0, gridExtra 2.3, lattice 0.20-35.
 
 ### Instructions for Use
 
