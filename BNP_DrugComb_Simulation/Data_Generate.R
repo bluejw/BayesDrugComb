@@ -6,8 +6,7 @@ library(LaplacesDemon)
 
 ###################################### Load the Preprocessed Data ##################################
 
-# load(file = "Simu.Data.Preprocess.Rdata") # preprocessed data from WIHS dataset
-load(file = "/Users/BlueJ/Desktop/Simu.Data.Preprocess.Rdata")
+load(file = "Simu.Data.Preprocess.Rdata") # preprocessed data from WIHS dataset
 
 n <- data_preprocess$n # number of patients
 J <- data_preprocess$J # number of visits for each patient
@@ -201,5 +200,4 @@ data$Kappa <- Kappa
 # others 
 data$D_pca <- c(26,33,39,46,51) # number of principal components used in sensitivity analysis
 
-# save(data, file="Simu.Truth.Rdata")
-save(data, file="/Users/BlueJ/Desktop/Simu.Truths.Rdata")
+save(data, file="Simu.Truths.Rdata")
