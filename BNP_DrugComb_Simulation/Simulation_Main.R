@@ -492,7 +492,7 @@ dev.off()
 #               (number of D representative ART regimens = 5, 10, 15)                    # 
 ##########################################################################################
 
-load(file='Sensi.Section.C1.Rdata')
+load(file='Sensi.Section.D1.Rdata')
 
 i <- 29 # index of individual
 q <- 2 # index of depression item
@@ -522,7 +522,7 @@ dev.off()
 #                        Figure S16: Model Misspecification                              # 
 ##########################################################################################
 
-load(file='Simu.Section.C2.Rdata')
+load(file='Simu.Section.D2.Rdata')
 
 i <- 29 # index of individual
 q <- 2 # index of depression item
