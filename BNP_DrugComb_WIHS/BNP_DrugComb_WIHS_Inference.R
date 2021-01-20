@@ -7,22 +7,17 @@ library(Matrix)
 library(ggplot2)
 library(gridExtra)
 
-# source("MCMC_R_Functions.R")
-# sourceCpp("MCMC_Rcpp_Functions.cpp")
-# source("BNP_DrugComb_MCMC.R")
-source("/Users/BlueJ/Desktop/MCMC_R_Functions.R")
-sourceCpp("/Users/BlueJ/Desktop/MCMC_Rcpp_Functions.cpp")
-source("/Users/BlueJ/Desktop/BNP_DrugComb_MCMC.R")
+source("MCMC_R_Functions.R")
+sourceCpp("MCMC_Rcpp_Functions.cpp")
+source("BNP_DrugComb_MCMC.R")
 
-# load(file = "WIHS.Data.Preprocess.Rdata")
-load(file = "/Users/BlueJ/Desktop/WIHS.Data.Preprocess.Rdata") # data: the preprocessed data from WIHS dataset
+load(file = "WIHS.Data.Preprocess.Rdata") # data: the preprocessed data from WIHS dataset
 
 ##########################################################################################
 #                           MCMC Posterior Inference                                     #
 ##########################################################################################
 
-# load(file="WIHS.MCMC.Results.Rdata")
-load(file="/Users/BlueJ/Desktop/WIHS.MCMC.Results.Rdata") # result: MCMC posterior samples for WIHS dataset analysis
+load(file="WIHS.MCMC.Results.ddCRP.ST.Rdata") # result: MCMC posterior samples for WIHS dataset analysis
 
 Clustering_Summary <- function(posterior_samples){
   nit <- dim(posterior_samples)[1] # number of itertaions
@@ -57,7 +52,7 @@ ci$beta <- Cred_Interval(result$beta[,1:post$r_n,,])
 ci$gamma <- Cred_Interval(result$gamma[,1:post$r_n,,])
 
 ##########################################################################################
-#                Posterior Means and 95% CIs for the Estimated Coefficients              #
+#         Figure 5: Posterior Means and 95% CIs for the Estimated Coefficients           #
 ##########################################################################################
 
 s <- 2 # Age
@@ -72,8 +67,7 @@ p1 <- ggplot(df1, aes(beta, value, colour = depression)) +
   theme(legend.title=element_text(size = 40, face='bold')) + theme(legend.text=element_text(size = 40)) + 
   theme(axis.title.x = element_text(size = 40, face='bold')) + theme(axis.title.y = element_text(size = 40, face='bold')) +
   theme(axis.text.x = element_text(size = 40)) + theme(axis.text.y = element_text(size = 40)) 
-# name <- paste("coef_esti_a.pdf")
-name <- paste("/Users/BlueJ/Desktop/coef_esti_a.pdf")
+name <- paste("coef_esti_a.pdf")
 pdf(name, width = 18, height = 12, onefile = TRUE)
 p1
 dev.off()
@@ -90,8 +84,7 @@ p2 <- ggplot(df2, aes(beta, value, colour = depression)) +
   theme(legend.title=element_text(size = 40, face='bold')) + theme(legend.text=element_text(size = 40)) + 
   theme(axis.title.x = element_text(size = 40, face='bold')) + theme(axis.title.y = element_text(size = 40, face='bold')) +
   theme(axis.text.x = element_text(size = 40)) + theme(axis.text.y = element_text(size = 40)) 
-# name <- paste("coef_esti_b.pdf")
-name <- paste("/Users/BlueJ/Desktop/coef_esti_b.pdf")
+name <- paste("coef_esti_b.pdf")
 pdf(name, width = 18, height = 12, onefile = TRUE)
 p2
 dev.off()
@@ -108,8 +101,7 @@ p3 <- ggplot(df3, aes(beta, value, colour = depression)) +
   theme(legend.title=element_text(size = 40, face='bold')) + theme(legend.text=element_text(size = 40)) + 
   theme(axis.title.x = element_text(size = 40, face='bold')) + theme(axis.title.y = element_text(size = 40, face='bold')) +
   theme(axis.text.x = element_text(size = 40)) + theme(axis.text.y = element_text(size = 40)) 
-# name <- paste("coef_esti_c.pdf")
-name <- paste("/Users/BlueJ/Desktop/coef_esti_c.pdf")
+name <- paste("coef_esti_c.pdf")
 pdf(name, width = 18, height = 12, onefile = TRUE)
 p3
 dev.off()
@@ -126,14 +118,13 @@ p4 <- ggplot(df4, aes(beta, value, colour = depression)) +
   theme(legend.title=element_text(size = 40, face='bold')) + theme(legend.text=element_text(size = 40)) + 
   theme(axis.title.x = element_text(size = 40, face='bold')) + theme(axis.title.y = element_text(size = 40, face='bold')) +
   theme(axis.text.x = element_text(size = 40)) + theme(axis.text.y = element_text(size = 40)) 
-# name <- paste("coef_esti_d.pdf")
-name <- paste("/Users/BlueJ/Desktop/coef_esti_d.pdf")
+name <- paste("coef_esti_d.pdf")
 pdf(name, width = 18, height = 12, onefile = TRUE)
 p4
 dev.off()
 
 ##########################################################################################
-#                     Estimated Coefficients for Combination Effects                     #
+#              Figure 6: Estimated Coefficients for Combination Effects                  #
 ##########################################################################################
 
 s <- 1 # PC1
@@ -148,8 +139,7 @@ p1 <- ggplot(df1, aes(gamma, value, colour = depression)) +
   theme(legend.title=element_text(size = 40, face='bold')) + theme(legend.text=element_text(size = 40)) + 
   theme(axis.title.x = element_text(size = 40, face='bold')) + theme(axis.title.y = element_text(size = 40, face='bold')) +
   theme(axis.text.x = element_text(size = 40)) + theme(axis.text.y = element_text(size = 40)) 
-# name <- paste("drug_effect_esti_a.pdf")
-name <- paste("/Users/BlueJ/Desktop/drug_effect_esti_a.pdf")
+name <- paste("drug_effect_esti_a.pdf")
 pdf(name, width = 18, height = 12, onefile = TRUE)
 p1
 dev.off()
@@ -166,14 +156,13 @@ p2 <- ggplot(df2, aes(gamma, value, colour = depression)) +
   theme(legend.title=element_text(size = 40, face='bold')) + theme(legend.text=element_text(size = 40)) + 
   theme(axis.title.x = element_text(size = 40, face='bold')) + theme(axis.title.y = element_text(size = 40, face='bold')) +
   theme(axis.text.x = element_text(size = 40)) + theme(axis.text.y = element_text(size = 40)) 
-# name <- paste("drug_effect_esti_b.pdf")
-name <- paste("/Users/BlueJ/Desktop/drug_effect_esti_b.pdf")
+name <- paste("drug_effect_esti_b.pdf")
 pdf(name, width = 18, height = 12, onefile = TRUE)
 p2
 dev.off()
 
 ##########################################################################################
-#              Top Five Positively and Negatively Related ART Regimens                  #
+#        Table 1: Top Five Positively and Negatively Related ART Regimens                #
 #                    for the First Two Principal Components                              #
 ##########################################################################################
 
@@ -190,13 +179,11 @@ print(order(data$eigenvec[,2])[index])
 print(data$z[data$index_kernel[order(data$eigenvec[,2])[index]],1:8])
 
 ##########################################################################################
-#                Predictive Depression Scores for a Hypothetical Individual              #
+#  Figure 7: Predictive Depression Scores for an Individual with Hypothetical Scenarios  #
 ##########################################################################################
 
-# source("Subset_Tree_Kernel_Similarity.R")
-# source("Prediction.R")
-source("/Users/BlueJ/Desktop/Subset_Tree_Kernel_Similarity.R")
-source("/Users/BlueJ/Desktop/Prediction.R")
+source("Subset_Tree_Kernel_Similarity.R")
+source("Prediction.R")
 
 Nit <- 500 # number of MCMC posterior iterations
 J_pred <- 7 # number of visits in total
@@ -257,8 +244,7 @@ p11 <- ggplot(data=df11a, aes(x=visit, y=num, fill=Class)) + geom_bar(stat="iden
   theme(legend.title=element_text(size=30, face='bold')) + theme(legend.text=element_text(size=30)) + 
   theme(axis.title.x = element_text(size = 30, face='bold')) + theme(axis.title.y = element_text(size = 30, face='bold')) +
   theme(axis.text.x = element_text(size = 30)) + theme(axis.text.y = element_text(size = 30))            
-# name <- paste("dep_pred_a.pdf")
-name <- paste("/Users/BlueJ/Desktop/dep_pred_a.pdf")
+name <- paste("dep_pred_a.pdf")
 pdf(name, width = 12, height = 6, onefile = TRUE)
 p11
 dev.off()
@@ -278,8 +264,7 @@ p12 <- ggplot(df12, aes(time, score, group=depression, colour=depression, shape=
   theme(legend.title=element_text(size = 30, face='bold')) + theme(legend.text=element_text(size = 30)) + 
   xlab(" ") + ylab("Depression score") + labs(colour="Item", shape="Item") + scale_y_continuous(limits = c(0,20)) +
   scale_x_continuous(labels = as.character(1:J_pred), breaks = 1:J_pred)
-# name <- paste("dep_pred_c.pdf")
-name <- paste("/Users/BlueJ/Desktop/dep_pred_c.pdf")
+name <- paste("dep_pred_c.pdf")
 pdf(name, width = 13, height = 6.5, onefile = TRUE)
 p12
 dev.off()
@@ -335,8 +320,7 @@ p21 <- ggplot(data=df21a, aes(x=visit, y=num, fill=Class)) + geom_bar(stat="iden
   theme(legend.title=element_text(size=30, face='bold')) + theme(legend.text=element_text(size=30)) + 
   theme(axis.title.x = element_text(size = 30, face='bold')) + theme(axis.title.y = element_text(size = 30, face='bold')) +
   theme(axis.text.x = element_text(size = 30)) + theme(axis.text.y = element_text(size = 30))            
-# name <- paste("dep_pred_b.pdf")
-name <- paste("/Users/BlueJ/Desktop/dep_pred_b.pdf")
+name <- paste("dep_pred_b.pdf")
 pdf(name, width = 12, height = 6, onefile = TRUE)
 p21
 dev.off()
@@ -356,8 +340,91 @@ p22 <- ggplot(df22, aes(time, score, group=depression, colour=depression, shape=
   theme(legend.title=element_text(size = 30, face='bold')) + theme(legend.text=element_text(size = 30)) + 
   xlab(" ") + ylab("Depression score") + labs(colour="Item", shape="Item") + scale_y_continuous(limits = c(0,20)) +
   scale_x_continuous(labels = as.character(1:J_pred), breaks = 1:J_pred)
-# name <- paste("dep_pred_d.pdf")
-name <- paste("/Users/BlueJ/Desktop/dep_pred_d.pdf")
+name <- paste("dep_pred_d.pdf")
 pdf(name, width = 13, height = 6.5, onefile = TRUE)
 p22
 dev.off()
+
+##########################################################################################
+#         Table S11: WAIC scores for five different methods in WIHS data analysis        #
+##########################################################################################
+
+Log_Likelihood_ST <- function(post, post_num){
+  
+  # calcluate the log-likelihood of the model
+  # args: post: posterior samples
+  # returns: logll: a n*post_num matrix of log-likelihood for n data points and post_num posterior samples
+  
+  logll <- matrix(0, nrow=n, ncol=post_num)
+  
+  # calculate the log-likelihood for each individual 
+  for (nit in 1:post_num){
+    print(nit)
+    for (i in 1:n){
+      cl <- post$pi_n[nit,i] # clustering membership for individual i
+      for (j in 1:J[i]){
+        # the mean and covariance matrix for the data
+        mean <- post$beta[nit,cl,,] %*% data$X[i,j,] + post$gamma[nit,cl,,] %*% data$H[i,j,]
+        var <- post$Sigma_omega[nit,,] + diag(post$sigma2[nit],Q,Q)
+        logll[i,nit] <- logll[i,nit] + dmvn_rcpp(data$Y[i,j,], mean, var, logd=TRUE)
+      }
+    }
+  }
+  return(logll)
+}
+
+# calculate the WAIC for ddCRP+ST
+load(file="WIHS.MCMC.Results.ddCRP.ST.Rdata")
+logll_ddcrp_st <- Log_Likelihood_ST(result, post_num=500)
+waic_ddcrp_st <- WAIC(logll_ddcrp_st)
+
+# calculate the WAIC for Normal+ST
+load(file="WIHS.MCMC.Results.Normal.ST.Rdata")
+logll_normal_st <- Log_Likelihood_ST(result, post_num=500)
+waic_normal_st <- WAIC(logll_normal_st)
+
+# calculate the WAIC for DP+ST
+load(file="WIHS.MCMC.Results.DP.ST.Rdata")
+logll_dp_st <- Log_Likelihood_ST(result, post_num=500)
+waic_dp_st <- WAIC(logll_dp_st)
+
+Log_Likelihood_Linear <- function(post, post_num){
+  
+  # calcluate the log-likelihood of the model
+  # args: post: posterior samples
+  # returns: logll: a n*post_num matrix of log-likelihood for n data points and post_num posterior samples
+  
+  logll <- matrix(0, nrow=n, ncol=post_num)
+  
+  # calculate the log-likelihood for each individual 
+  for (nit in 1:post_num){
+    print(nit)
+    for (i in 1:n){
+      cl <- post$pi_n[nit,i] # clustering membership for individual i
+      for (j in 1:J[i]){
+        # the mean and covariance matrix for the data
+        mean <- post$beta[nit,cl,,] %*% data$X[i,j,] + post$gamma[nit,cl,,] %*% data$H_linear[i,j,]
+        var <- post$Sigma_omega[nit,,] + diag(post$sigma2[nit],Q,Q)
+        logll[i,nit] <- logll[i,nit] + dmvn_rcpp(data$Y[i,j,], mean, var, logd=TRUE)
+      }
+    }
+  }
+  return(logll)
+}
+
+# calculate the WAIC for Normal+Lineaer
+load(file="WIHS.MCMC.Results.Normal.Linear.Rdata")
+logll_normal_linear <- Log_Likelihood_Linear(result, post_num=500)
+waic_normal_linear <- WAIC(logll_normal_linear)
+
+# calculate the WAIC for DP+Linear
+load(file="WIHS.MCMC.Results.DP.Linear.Rdata")
+logll_dp_linear <- Log_Likelihood_Linear(result, post_num=500)
+waic_dp_linear <- WAIC(logll_dp_linear)
+
+# WAIC Score Summary
+waic_ddcrp_st$WAIC # 90378.26
+waic_normal_st$WAIC # 100704.2
+waic_dp_st$WAIC # 118164.1
+waic_normal_linear$WAIC # 100258.4
+waic_dp_linear$WAIC # 219565.6
