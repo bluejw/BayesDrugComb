@@ -21,7 +21,7 @@ Nit <- 10000 # number of total MCMC intertaions
 burn.in <- 5000 # the burn-in iterations
 thin.fac <- 10 # thinning factor for post burn-in samples 
 r_n_max <- 10 # maximum number of clusters 
-# Run MCMC (it takes about 1.5 hours for 10000 itertaions)
+# Run MCMC (it takes about 1.5 hours for 10000 iterations)
 MCMC_Result <- BNP_DrugComb_MCMC(Nit, burn.in, thin.fac, r_n_max)
 
 ##########################################################################################
