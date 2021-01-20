@@ -30,7 +30,7 @@ In the folder “BNP_DrugComb_Simulation”:
 
 * We save the estimated combination effects and the MSE in the 100 repeated simulations under our proposed method ddCRP+ST, and four alternative methods Normal+ST, Normal+Linear, DP+ST, and DP+Linear in the R data file “Simu.Combination.Effects.Rdata”;
 
-* We save the data and posterior samples used in Secion C1 and C2 of the Supplementary Material in the R data files "Sensi.Section.C1.Rdata" and "Simu.Section.C2.Rdata".
+* We save the data and posterior samples used in Secion D1 and D2 of the Supplementary Material in the R data files "Sensi.Section.D1.Rdata" and "Simu.Section.D2.Rdata".
 
 In the folder “BNP_DrugComb_WIHS”:
 
