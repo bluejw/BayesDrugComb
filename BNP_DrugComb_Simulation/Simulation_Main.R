@@ -396,7 +396,7 @@ sd(h_est$h_mse_dp_linear) # 4.934936
 sd(h_est$h_mse_normal_linear) # 0.008427978
 
 ##########################################################################################
-#              Figure S10: Sensitivity Analysis  (eta = 0.1, 0.3, 0.5, 0.8, 1)           #
+#              Figure S14: Sensitivity Analysis  (eta = 0.1, 0.3, 0.5, 0.8, 1)           #
 ##########################################################################################
 
 load(file="Sensi.MCMC.Results.Rdata") # sensi_result: MCMC posterior samples for sensitivity analysis
@@ -485,88 +485,4 @@ p3 <- ggplot(df3, aes(beta, value, colour = eta)) +
 name <- paste("sensi_results_c.pdf")
 pdf(name, width = 18, height = 16, onefile = TRUE)
 p3
-dev.off()
-
-##########################################################################################
-#                        Figure S15: Sensitivity Analysis                                # 
-#               (number of D representative ART regimens = 5, 10, 15)                    # 
-##########################################################################################
-
-load(file='Sensi.Section.D1.Rdata')
-
-i <- 29 # index of individual
-q <- 2 # index of depression item
-visit <- which(data$index_regimens[i,1:J[i]]!=1466) # non-empty regimen visits
-df <- data.frame(x = rep(1:length(visit),4), 
-                  h = c(data$h[i,visit,q], colMeans(h_est$h_est3[,i,visit,q],dims=1), 
-                        colMeans(h_est$h_est1[,i,visit,q],dims=1), colMeans(h_est$h_est2[,i,visit,q],dims=1)), 
-                  est = factor(c(rep("Truths",length(visit)), rep(">= 5 visits",length(visit)),
-                                 rep(">= 10 visits",length(visit)), rep(">= 15 visits",length(visit))), 
-                               levels = c("Truths",">= 5 visits",">= 10 visits",">= 15 visits")))
-p <- ggplot(data=df, aes(x, h, colour=est, shape=est)) + geom_line(size=1.5) + geom_point(size=4) +
-  theme(axis.title.x = element_text(size = 50, face="bold")) + theme(axis.title.y = element_text(size = 50, face="bold")) +
-  theme(axis.text.x = element_text(size = 40)) + theme(axis.text.y = element_text(size = 40)) + 
-  theme(legend.title=element_text(size = 42.5)) + theme(legend.text=element_text(size = 42.5)) + 
-  xlab("Visit") + ylab("Combination effect") + labs(col=" ", shape=" ") +  
-  scale_x_continuous(labels = as.character(1:length(visit)), breaks = 1:length(visit)) +
-  theme(legend.position = "top") +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))  + 
-  scale_color_manual(breaks = c("Truths",">= 5 visits",">= 10 visits",">= 15 visits"), values = c("black","#00BA38","#619CFF","#F8766D"))
-name <- paste("diff_D.pdf")
-pdf(name, width = 18, height = 12, onefile = TRUE)
-p
-dev.off()
-
-##########################################################################################
-#                        Figure S16: Model Misspecification                              # 
-##########################################################################################
-
-load(file='Simu.Section.D2.Rdata')
-
-i <- 29 # index of individual
-q <- 2 # index of depression item
-visit <- which(data$index_regimens[i,1:J[i]]!=1466) # non-empty regimen visits
-# normal data generation
-df <- data.frame(x = rep(1:length(visit),2), 
-                  h = c(modelmis$h_normal[i,visit,q], colMeans(modelmis$h_normal_est[,i,visit,q],dims=1)), 
-                  lower = rep(apply(modelmis$h_normal_est[,i,visit,q], 2, quantile, prob=c(0.025)), 2),
-                  upper = rep(apply(modelmis$h_normal_est[,i,visit,q], 2, quantile, prob=c(0.975)), 2),
-                  est = factor(c(rep("Truths",length(visit)), rep("Estimation",length(visit))), levels = c("Truths","Estimation")))
-p <- ggplot(data=df, aes(x, h, colour=est, shape=est)) + 
-  geom_ribbon(aes(x, ymin=lower, ymax=upper), fill="darkgray", colour="darkgray") + geom_line(size=2) + geom_point(size=4) +
-  theme(axis.title.x = element_text(size = 50, face="bold")) + theme(axis.title.y = element_text(size = 50, face="bold")) +
-  theme(axis.text.x = element_text(size = 40)) + theme(axis.text.y = element_text(size = 40)) + 
-  theme(legend.title=element_text(size = 42.5)) + theme(legend.text=element_text(size = 42.5)) + 
-  xlab("Visit") + ylab("Combination effect") + labs(col=" ", shape=" ") +  
-  scale_x_continuous(labels = as.character(1:length(visit)), breaks = 1:length(visit)) +
-  theme(legend.position = "top") +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))  + 
-  scale_color_manual(breaks = c("Truths","Estimation"), values = c("black", "#F8766D"))
-name <- paste("normal_truth.pdf")
-pdf(name, width = 18, height = 12, onefile = TRUE)
-p
-dev.off()
-
-# linear kernel data generation
-df <- data.frame(x = rep(1:length(visit),2), 
-                  h = c(modelmis$h_linear[i,visit,q], colMeans(modelmis$h_linear_est[,i,visit,q],dims=1)), 
-                  lower = rep(apply(modelmis$h_linear_est[,i,visit,q], 2, quantile, prob=c(0.025)), 2),
-                  upper = rep(apply(modelmis$h_linear_est[,i,visit,q], 2, quantile, prob=c(0.975)), 2),
-                  est = factor(c(rep("Truths",length(visit)), rep("Estimation",length(visit))), levels = c("Truths","Estimation")))
-p <- ggplot(data=df, aes(x, h, colour=est, shape=est)) + 
-  geom_ribbon(aes(x, ymin=lower, ymax=upper), fill="darkgray", colour="darkgray") + geom_line(size=2) + geom_point(size=4) +
-  theme(axis.title.x = element_text(size = 50, face="bold")) + theme(axis.title.y = element_text(size = 50, face="bold")) +
-  theme(axis.text.x = element_text(size = 40)) + theme(axis.text.y = element_text(size = 40)) + 
-  theme(legend.title=element_text(size = 42.5)) + theme(legend.text=element_text(size = 42.5)) + 
-  xlab("Visit") + ylab("Combination effect") + labs(col=" ", shape=" ") +  
-  scale_x_continuous(labels = as.character(1:length(visit)), breaks = 1:length(visit)) +
-  theme(legend.position = "top") +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-        panel.background = element_blank(), axis.line = element_line(colour = "black"))  + 
-  scale_color_manual(breaks = c("Truths","Estimation"), values = c("black", "#F8766D"))
-name <- paste("linear_kernel_truth.pdf")
-pdf(name, width = 18, height = 12, onefile = TRUE)
-p
 dev.off()
