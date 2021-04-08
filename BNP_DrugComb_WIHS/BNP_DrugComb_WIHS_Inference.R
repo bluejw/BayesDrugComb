@@ -346,7 +346,7 @@ p22
 dev.off()
 
 ##########################################################################################
-#         Table S11: WAIC scores for five different methods in WIHS data analysis        #
+#         Table S10: WAIC scores for five different methods in WIHS data analysis        #
 ##########################################################################################
 
 Log_Likelihood_ST <- function(post, post_num){
