@@ -6,7 +6,7 @@ R data and code for the paper:
 ## Data
 
 The data analyzed in Section 4 “Application: WIHS Data Analysis” of the paper are from The Women's Interagency HIV Study (WIHS), which is a multisite, longitudinal cohort study of the natural and treated history of women living with HIV and women at-risk for HIV in the United States.
-The data are publicly available. However, one need to fill in a request form for access. Full details of the data are available at https://statepi.jhsph.edu/wihs/wordpress/. R data for the simulation study and WIHS data analysis of the paper are available at https://drive.google.com/file/d/1ZGn61V7cK7kxOZrVmHK68f3mD1m1qyQG/view?usp=sharing.
+The data are publicly available. However, one need to fill in a request form for access. Full details of the data are available at https://statepi.jhsph.edu/wihs/wordpress/. R data for the simulation study and WIHS data analysis of the paper are available at the following link: https://drive.google.com/file/d/1U2lZK9UwS60ABzhO5AtOV7ohPsnG49l1/view?usp=sharing.
 
 ## Code 
 
@@ -18,7 +18,7 @@ Libraries and Version Numbers: R 3.5.1, Rcpp 1.0.0, RcppArmadillo 0.9.700.2.0, R
 
 In the folder “BNP_DrugComb_Simulation”:
 
-* The R script “Simulation_Main.R” reproduces Figure 4 in the manuscript, and Figure/Table S1-10 and S15-16 in the Supplementary Material;
+* The R script “Simulation_Main.R” reproduces Figure 4 in the manuscript, and Figure/Table S1-S9 and S14 in the Supplementary Material;
     
 * The R data file “Simu.Data.Preprocess.Rdata” contains the preprocessed data from the WIHS dataset used for generating simulation truths. The R script “Data_Generate.R” generates the simulated dataset, which is saved in the R data file “Simu.Truths.Rdata”;  
 
@@ -28,13 +28,11 @@ In the folder “BNP_DrugComb_Simulation”:
 
 * We save the posterior co-clustering results based on 100 repeated simulations in the R data file “Simu.Co.Clustering.Rdata”, the posterior estimated number of clusters for all the 100 repeated simulations in the R data file "Simu.Cluster.Number.Rdata", and the mean squared errors for all 100 repeated simulations in the R data file “Simu.Mean.Squared.Error.Rdata”;
 
-* We save the estimated combination effects and the MSE in the 100 repeated simulations under our proposed method ddCRP+ST, and four alternative methods Normal+ST, Normal+Linear, DP+ST, and DP+Linear in the R data file “Simu.Combination.Effects.Rdata”;
-
-* We save the data and posterior samples used in Secion D1 and D2 of the Supplementary Material in the R data files "Sensi.Section.D1.Rdata" and "Simu.Section.D2.Rdata".
+* We save the estimated combination effects and the MSE in the 100 repeated simulations under our proposed method ddCRP+ST, and four alternative methods Normal+ST, Normal+Linear, DP+ST, and DP+Linear in the R data file “Simu.Combination.Effects.Rdata”.
 
 In the folder “BNP_DrugComb_WIHS”:
 
-* The R script “BNP_DrugComb_WIHS_Inference.R” reproduces Figure 5-7, Table 1 in the manuscript, and Table S11 in the Supplementary Material;
+* The R script “BNP_DrugComb_WIHS_Inference.R” reproduces Figure 5-7, Table 1 in the manuscript, and Table S10 in the Supplementary Material;
 
 * The R script “MCMC_R_Functions.R” provides R functions used for MCMC, the Rcpp script “MCMC_Rcpp_Functions.cpp” provides Rcpp functions used for MCMC, and the R script “BNP_DrugComb_MCMC.R” provides the MCMC main function;
 
