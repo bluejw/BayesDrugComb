@@ -39,3 +39,9 @@ In the folder “BNP_DrugComb_WIHS”:
 * The R script “Subset_Tree_Kernel_Similarity.R” provides functions for calculating the similarity matrix induced by subset-tree kernel, and the R script “Prediction.R” provides functions for predictions；
 
 * We save the preprocessed data from the WIHS dataset for inference in the R data file “WIHS.Data.Preprocess.Rdata”, and the MCMC posterior samples for the WIHS data analysis under our proposed method ddCRP+ST and four altervative methods Normal+ST, Normal+Linear, DP+ST, and DP+Linear in R data files “WIHS.MCMC.Results.ddCRP.ST.Rdata”, “WIHS.MCMC.Results.Normal.ST.Rdata”, “WIHS.MCMC.Results.Normal.Linear.Rdata”, “WIHS.MCMC.Results.DP.ST.Rdata”, and “WIHS.MCMC.Results.DP.Linear.Rdata", respectively.
+
+## Rshiny
+
+To facilitate the implementation of the proposed method in the decision process of HIV clinicians, and for broad application in personalized medicine, we have created an interactive web application to illustrate an example using R package shiny, available at https://wjin.shinyapps.io/Rshiny/.
+The web user interface interactively displays the predictive depression scores of an individual in response to the user’s choice of the individual’s clinical characteristics and ART medication use.
+
